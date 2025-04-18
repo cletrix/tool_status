@@ -37,7 +37,7 @@ Execute com:
 
 Mova o script para um diretório acessível pelo sistema:
 
-    sudo mv trackpad_status.sh /usr/local/bin/trackpad_status
+    sudo cp trackpad_status.sh /usr/local/bin/trackpad_status
 
 Agora você pode executá-lo diretamente com:
 
