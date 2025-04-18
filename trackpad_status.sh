@@ -1,26 +1,24 @@
 #!/bin/bash
 
-# Verifica se está presente via USB
-usb_info=$(system_profiler SPUSBDataType | grep -i "Magic Trackpad")
+# Busca todas as entradas Transport associadas ao Trackpad
+transports=$(ioreg -r -n "AppleDeviceManagementHIDEventService" | grep -i '"Transport"' | awk -F'= ' '{print $2}' | tr -d '"' | sort | uniq)
 
-# Verifica se está presente via Bluetooth e conectado
-bt_info=$(system_profiler SPBluetoothDataType | grep -A10 -i "Magic Trackpad" | grep "Connected: Yes")
-
-# Busca o primeiro BatteryPercent disponível no sistema
+# Busca bateria
 battery=$(ioreg -r -n "AppleDeviceManagementHIDEventService" | grep '"BatteryPercent"' | head -n1 | awk -F'= ' '{print $2}' | tr -d ' ')
 
-# Exibe status de conexão
-if [[ -n "$usb_info" && -z "$bt_info" ]]; then
-    echo "✅ Magic Trackpad conectado via CABO (USB)."
-elif [[ -n "$bt_info" ]]; then
-    echo "📡 Magic Trackpad conectado via BLUETOOTH."
-elif [[ -z "$usb_info" && -z "$bt_info" ]]; then
-    echo "❌ Magic Trackpad não detectado via Bluetooth nem USB."
+# Determina tipo de conexão
+connection=""
+if echo "$transports" | grep -q "USB"; then
+    connection="✅ Magic Trackpad conectado via CABO (USB)."
+elif echo "$transports" | grep -q "Bluetooth"; then
+    connection="📡 Magic Trackpad conectado via BLUETOOTH."
 else
-    echo "⚠️ Detecção ambígua: pode estar carregando via cabo, mas operando via Bluetooth."
+    connection="❌ Magic Trackpad não detectado."
 fi
 
-# Exibe nível da bateria
+# Exibe resultado
+echo "$connection"
+
 if [[ -n "$battery" ]]; then
     echo "🔋 Bateria do Trackpad: $battery%"
 else
