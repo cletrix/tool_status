@@ -21,15 +21,15 @@ Este script em bash permite identificar:
 
 Salve o conteúdo do script principal em um arquivo, por exemplo:
 
-    trackpad-status.sh
+    trackpad_status.sh
 
 Torne executável:
 
-    chmod +x trackpad-status.sh
+    chmod +x trackpad_status.sh
 
 Execute com:
 
-    ./trackpad-status.sh
+    ./trackpad_status.sh
 
 ---
 
@@ -37,11 +37,11 @@ Execute com:
 
 Mova o script para um diretório acessível pelo sistema:
 
-    sudo mv trackpad-status.sh /usr/local/bin/trackpad-status
+    sudo mv trackpad_status.sh /usr/local/bin/trackpad_status
 
 Agora você pode executá-lo diretamente com:
 
-    trackpad-status
+    trackpad_status
 
 ---
 
@@ -49,7 +49,7 @@ Agora você pode executá-lo diretamente com:
 
 Para facilitar ainda mais, adicione um atalho no seu terminal:
 
-    echo 'alias trackpad="trackpad-status"' >> ~/.zshrc
+    echo 'alias trackpad="trackpad_status"' >> ~/.zshrc
     source ~/.zshrc
 
 Depois disso, use:
@@ -82,3 +82,8 @@ Ou:
 ## 📃 Licença
 
 MIT License – livre para usar, modificar e distribuir.
+
+---
+
+##    By Cleyton Pedroza and ChatGPT
+
