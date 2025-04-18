@@ -87,6 +87,6 @@ MIT License – livre para usar, modificar e distribuir.
 
 ## By 
 
-Cleyton Pedroza 
-ChatGPT
+    Cleyton Pedroza 
+    ChatGPT
 
