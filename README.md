@@ -1,10 +1,10 @@
 
-# 🔋 Magic Trackpad Status Checker (macOS)
+# 🔋 Status Checker (macOS)
 
 Este script em bash permite identificar:
 
-- Se o **Magic Trackpad** está conectado via **USB (cabo)** ou **Bluetooth**.
-- O nível atual de **bateria (%)**, mesmo quando o Trackpad estiver conectado por **cabo**.
+- Se o **Magic Trackpad e o Magic Keyboard** está conectado via **USB (cabo)** ou **Bluetooth**.
+- O nível atual de **bateria (%)**, mesmo quando estiver conectado por **cabo**.
 
 ---
 
@@ -21,15 +21,15 @@ Este script em bash permite identificar:
 
 Salve o conteúdo do script principal em um arquivo, por exemplo:
 
-    trackpad_status.sh
+    status.sh
 
 Torne executável:
 
-    chmod +x trackpad_status.sh
+    chmod +x status.sh
 
 Execute com:
 
-    ./trackpad_status.sh
+    ./status.sh
 
 ---
 
@@ -37,11 +37,11 @@ Execute com:
 
 Mova o script para um diretório acessível pelo sistema:
 
-    sudo cp trackpad_status.sh /usr/local/bin/trackpad_status
+    sudo cp status.sh /usr/local/bin/status
 
 Agora você pode executá-lo diretamente com:
 
-    trackpad_status
+    status
 
 ---
 
@@ -49,18 +49,18 @@ Agora você pode executá-lo diretamente com:
 
 Para facilitar ainda mais, adicione um atalho no seu terminal:
 
-    echo 'alias trackpad="trackpad_status"' >> ~/.zshrc
+    echo 'alias status="status"' >> ~/.zshrc
     source ~/.zshrc
 
 Depois disso, use:
 
-    trackpad
+    status
 
 ---
 
 ## 🔍 O que o script faz
 
-1. Verifica se o Trackpad está conectado via USB.
+1. Verifica se o Trackpad e o Keyboard estão conectados via USB.
 2. Verifica se está conectado via Bluetooth.
 3. Busca o nível da bateria com `ioreg`, mesmo via cabo.
 4. Exibe as informações de forma amigável.
@@ -69,13 +69,16 @@ Depois disso, use:
 
 ## 💡 Exemplo de saída
 
-    ✅ Magic Trackpad conectado via CABO (USB).
-    🔋 Bateria do Trackpad: 100%
-
-Ou:
-
+    🔍 Magic Trackpad
     📡 Magic Trackpad conectado via BLUETOOTH.
-    🔋 Bateria do Trackpad: 75%
+    🔋 Bateria do Magic Trackpad: 100%
+    -------------------------------
+    🔍 Magic Keyboard
+    ✅ Magic Keyboard conectado via CABO (USB).
+    🔋 Bateria do Magic Keyboard: 100%
+    -------------------------------
+    💻 Bateria do MacBook
+    🔋 Bateria do MacBook: 92% (AC Power)
 
 ---
 
