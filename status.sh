@@ -54,7 +54,7 @@ if [[ -n "$kb_info" ]]; then
     fi
 elif [[ -n "$sp_bluetooth" ]]; then
     # Se o system_profiler identificar, pegamos a bateria e conexão do dump Bluetooth:
-    kb_battery=$(echo "$sp_bluetooth" | grep "Battery Level" | awk -F': ' '{print $2}' | tr -d '%')
+    kb_battery=$(echo "$sp_bluetooth" | grep "Battery Level" | awk -F': ' '{print $2}' | tr -d '%' | xargs | head -n1)
     kb_connection="📡 Magic Keyboard conectado via BLUETOOTH."
 else
     kb_connection="❌ Magic Keyboard não detectado."
